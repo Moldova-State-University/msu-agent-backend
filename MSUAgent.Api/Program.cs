@@ -1,13 +1,13 @@
-using MediatR;
+using MSUAgent.Api.Extensions;
+using MSUAgent.Application.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(typeof(MSUAgent.Application.AssemblyReference).Assembly));
+    cfg.RegisterServicesFromAssembly(typeof(GetStatusQuery).Assembly));
 
 builder.Services.AddHealthChecks();
 
@@ -16,16 +16,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(); 
 }
 
 app.UseHttpsRedirection();
 
-app.MapGet("/status", async (IMediator mediator) =>
-{
-    var status = await mediator.Send(new MSUAgent.Application.Queries.GetStatusQuery());
-    return Results.Ok(status);
-});
+app.MapEndpointGroups(typeof(Program).Assembly);
 
 app.MapHealthChecks("/health");
 
