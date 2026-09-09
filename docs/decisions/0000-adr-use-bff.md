@@ -1,4 +1,4 @@
-# ADR-001-Use-Bff
+# ADR-Use-Bff
 
 * Status: accepted
 * Deciders: Stanislav Ciobanu
