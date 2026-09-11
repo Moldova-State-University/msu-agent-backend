@@ -1,7 +1,6 @@
-﻿namespace MSUAgent.Infrastructure.Persistence
+﻿namespace MSUAgent.Infrastructure.Persistence;
+
+public interface IDataSeeder
 {
-    public interface IDataSeeder
-    {
-        Task SeedAsync(CancellationToken cancel);
-    }
+    Task SeedAsync(CancellationToken cancel);
 }
