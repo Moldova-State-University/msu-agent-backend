@@ -3,7 +3,7 @@
 public interface IUnitOfWork
 {
     IUserRepository Users { get; }
+    IUserRoleRepository UserRoles { get; }
 
-    Task SaveChangesAsync(
-        CancellationToken cancellationToken = default);
+    Task SaveChangesAsync(CancellationToken cancellationToken = default);
 }
