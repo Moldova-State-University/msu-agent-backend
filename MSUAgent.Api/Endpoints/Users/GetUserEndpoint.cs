@@ -22,13 +22,11 @@ public static class GetUserEndpoint
             };
         }
 
-        var user = result.Value!;
-
         var response = new UserResponse(
-            user.Id,
-            user.DisplayName,
-            user.Email,
-            user.Roles);
+            result.Value!.Id,
+            result.Value.DisplayName,
+            result.Value.Email,
+            result.Value.Roles);
 
         return Results.Ok(response);
     }

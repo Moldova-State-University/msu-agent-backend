@@ -6,8 +6,7 @@ public static class ResultExtensions
     {
         return new Result<T>
         {
-            Value = value,
-            IsError = false
+            Value = value
         };
     }
 
@@ -17,7 +16,6 @@ public static class ResultExtensions
     {
         return new Result<T>
         {
-            IsError = true,
             ErrorType = errorType,
             ErrorMessage = errorMessage
         };

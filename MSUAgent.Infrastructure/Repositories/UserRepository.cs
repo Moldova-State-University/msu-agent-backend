@@ -5,16 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MSUAgent.Infrastructure.Repositories;
 
-public class UserRepository : IUserRepository
+public class UserRepository : BaseRepository<User>, IUserRepository
 {
-    private readonly AppDbContext _dbContext;
-
-    public UserRepository(AppDbContext dbContext)
+    public UserRepository(AppDbContext dbContext) : base(dbContext)
     {
-        _dbContext = dbContext;
     }
 
-    public async Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public override async Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Users
             .AsNoTracking()
