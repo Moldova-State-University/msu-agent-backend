@@ -14,9 +14,9 @@ public class UnitOfWork : IUnitOfWork
 
     public IUserRepository Users { get; }
 
-    public Task<int> SaveChangesAsync(
+    public async Task SaveChangesAsync(
         CancellationToken cancellationToken = default)
     {
-        return _dbContext.SaveChangesAsync(cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 }

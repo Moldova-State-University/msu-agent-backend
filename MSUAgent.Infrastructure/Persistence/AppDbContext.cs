@@ -9,8 +9,8 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<User> Users { get; set; } = null!;
-    public DbSet<UserRole> UserRoles { get; set; } = null!;
+    public DbSet<User> Users => Set<User>();
+    public DbSet<UserRole> UserRoles => Set<UserRole>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

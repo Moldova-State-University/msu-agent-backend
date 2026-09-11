@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using MSUAgent.Application.Interfaces;
+using MSUAgent.Application.Models.Results;
 
 namespace MSUAgent.Application.Queries.Users;
 
-public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserResponse?>
+public class GetUserQueryHandler : IRequestHandler<GetUserQuery, IResult<UserDto>>
 {
     private readonly IUserRepository _userRepository;
 
@@ -12,7 +13,7 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserResponse?>
         _userRepository = userRepository;
     }
 
-    public async Task<UserResponse?> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public async Task<IResult<UserDto>> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetByIdAsync(
             request.Id,
@@ -20,13 +21,17 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserResponse?>
 
         if (user is null)
         {
-            return null;
+            return ResultExtensions.Failure<UserDto>(
+                ErrorType.NotFound,
+                "User not found");
         }
 
-        return new UserResponse(
+        var userDto = new UserDto(
             user.Id,
             user.DisplayName,
             user.Email,
-            user.Roles.Select(role => role.Name).ToList());
+            [.. user.Roles.Select(role => role.Name)]);
+
+        return userDto.Success();
     }
 }

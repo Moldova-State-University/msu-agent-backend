@@ -58,23 +58,6 @@ namespace MSUAgent.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("UserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("9eaedadf-ba46-4230-8b7e-85315d349253"),
-                            Name = "Member"
-                        },
-                        new
-                        {
-                            Id = new Guid("ea296a63-efba-43dc-ab83-433e9a68b1c8"),
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            Id = new Guid("a6ffec69-0d9d-4798-be3f-099d9c587fc4"),
-                            Name = "Owner"
-                        });
                 });
 
             modelBuilder.Entity("UserUserRole", b =>

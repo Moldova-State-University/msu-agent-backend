@@ -1,9 +1,5 @@
 ﻿using MediatR;
+using MSUAgent.Application.Models.Results;
 
-public record GetUserQuery(Guid Id) : IRequest<UserResponse?>;
-
-public record UserResponse(
-    Guid Id,
-    string DisplayName,
-    string Email,
-    IReadOnlyCollection<string> Roles);
+namespace MSUAgent.Application.Queries.Users;
+public record GetUserQuery(Guid Id) : IRequest<IResult<UserDto>>;

@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace MSUAgent.Infrastructure.Migrations
 {
     /// <inheritdoc />
@@ -60,16 +58,6 @@ namespace MSUAgent.Infrastructure.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "UserRoles",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { new Guid("9eaedadf-ba46-4230-8b7e-85315d349253"), "Member" },
-                    { new Guid("a6ffec69-0d9d-4798-be3f-099d9c587fc4"), "Owner" },
-                    { new Guid("ea296a63-efba-43dc-ab83-433e9a68b1c8"), "Admin" }
                 });
 
             migrationBuilder.CreateIndex(

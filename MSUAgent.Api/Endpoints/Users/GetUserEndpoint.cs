@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MSUAgent.Application.Models.Results;
 using MSUAgent.Application.Queries.Users;
 
 namespace MSUAgent.Api.Endpoints.Users;
@@ -7,12 +8,28 @@ public static class GetUserEndpoint
 {
     public static async Task<IResult> Handle(
         Guid id,
-        IMediator mediator)
+        IMediator mediator,
+        CancellationToken cancellationToken)
     {
-        var user = await mediator.Send(new GetUserQuery(id));
+        var result = await mediator.Send(new GetUserQuery(id), cancellationToken);
 
-        return user is null
-            ? Results.NotFound()
-            : Results.Ok(user);
+        if (result.IsError)
+        {
+            return result.ErrorType switch
+            {
+                ErrorType.NotFound => Results.NotFound(result.ErrorMessage),
+                _ => Results.BadRequest(result.ErrorMessage)
+            };
+        }
+
+        var user = result.Value!;
+
+        var response = new UserResponse(
+            user.Id,
+            user.DisplayName,
+            user.Email,
+            user.Roles);
+
+        return Results.Ok(response);
     }
 }
