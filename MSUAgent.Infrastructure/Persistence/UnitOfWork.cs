@@ -6,13 +6,19 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext _dbContext;
 
-    public UnitOfWork(AppDbContext dbContext, IUserRepository userRepository)
+    public UnitOfWork(
+        AppDbContext dbContext, 
+        IUserRepository userRepository,
+        IUserRoleRepository userRoleRepository)
     {
         _dbContext = dbContext;
+
         Users = userRepository;
+        UserRoles = userRoleRepository;
     }
 
     public IUserRepository Users { get; }
+    public IUserRoleRepository UserRoles { get; }
 
     public async Task SaveChangesAsync(
         CancellationToken cancellationToken = default)
