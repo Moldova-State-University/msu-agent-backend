@@ -12,10 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MSUAgent.Api\MSUAgent.Api.csproj" />
+	<ProjectReference Include="..\MSUAgent.MigrationService\MSUAgent.MigrationService.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36915.13
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12201.205 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Domain", "MSUAgent.Domain\MSUAgent.Domain.csproj", "{E770692B-C9A2-4499-9C85-1C2B0D0A195A}"
 EndProject
@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Hosting.Aspire", "MSUAgent.Hosting.Aspire\MSUAgent.Hosting.Aspire.csproj", "{E1DD28D5-7C89-41F0-9EA1-340248765C4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.MigrationService", "MSUAgent.MigrationService\MSUAgent.MigrationService.csproj", "{1C003C49-080E-4812-B9C2-682E3CB40A1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{E1DD28D5-7C89-41F0-9EA1-340248765C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1DD28D5-7C89-41F0-9EA1-340248765C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1DD28D5-7C89-41F0-9EA1-340248765C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C003C49-080E-4812-B9C2-682E3CB40A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C003C49-080E-4812-B9C2-682E3CB40A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C003C49-080E-4812-B9C2-682E3CB40A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C003C49-080E-4812-B9C2-682E3CB40A1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
