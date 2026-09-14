@@ -14,11 +14,19 @@ if (useLocalDatabase)
 
     var migrationService = builder.AddMigrationService(msuAgentDb);
 
-    builder.AddMSUAgentApi(msuAgentDb, migrationService);
+    var backend = builder.AddMSUAgentApi(msuAgentDb, migrationService);
+    builder
+        .AddProject<Projects.MSUAgent_MobileBff>("msu-agent-mobile-bff")
+        .WithReference(backend)
+        .WaitFor(backend);
 }
 else
 {
-    builder.AddProject<Projects.MSUAgent_Api>("msu-agent-api");
+    var backend = builder.AddProject<Projects.MSUAgent_Api>("msu-agent-api");
+    builder
+        .AddProject<Projects.MSUAgent_MobileBff>("msu-agent-mobile-bff").
+        WithReference(backend)
+        .WaitFor(backend);
 }
 
 builder.Build().Run();

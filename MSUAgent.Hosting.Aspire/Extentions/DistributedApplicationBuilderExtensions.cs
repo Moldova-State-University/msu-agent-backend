@@ -33,7 +33,7 @@ internal static class DistributedApplicationBuilderExtensions
         return database;
     }
 
-    public static IResourceBuilder<IResourceWithEndpoints> AddMSUAgentApi(
+    public static IResourceBuilder<ProjectResource> AddMSUAgentApi(
         this IDistributedApplicationBuilder builder,
         IResourceBuilder<IResourceWithConnectionString> msuAgentDb,
         IResourceBuilder<IResource> migrationService)

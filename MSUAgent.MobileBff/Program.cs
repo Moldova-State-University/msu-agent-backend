@@ -12,7 +12,7 @@ builder.Services.AddHttpClient(
     client =>
     {
         client.BaseAddress =
-            new Uri("https+http://msuagent-api");
+            new Uri("https+http://msu-agent-api");
     })
     .AddServiceDiscovery();
 
