@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Hosting.Aspire", "MSUAgent.Hosting.Aspire\MSUAgent.Hosting.Aspire.csproj", "{E1DD28D5-7C89-41F0-9EA1-340248765C4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.MobileBff", "MSUAgent.MobileBff\MSUAgent.MobileBff.csproj", "{1F04A841-6F03-4D53-9B74-CADEFEEA7DC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{E1DD28D5-7C89-41F0-9EA1-340248765C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1DD28D5-7C89-41F0-9EA1-340248765C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1DD28D5-7C89-41F0-9EA1-340248765C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F04A841-6F03-4D53-9B74-CADEFEEA7DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F04A841-6F03-4D53-9B74-CADEFEEA7DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F04A841-6F03-4D53-9B74-CADEFEEA7DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F04A841-6F03-4D53-9B74-CADEFEEA7DC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
