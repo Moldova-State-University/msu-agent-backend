@@ -2,7 +2,6 @@ using MSUAgent.Api.Extensions;
 using MSUAgent.Api.Middlewares;
 using MSUAgent.Application.Queries;
 using MSUAgent.Infrastructure;
-using MSUAgent.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,14 +18,6 @@ builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 app.UseMiddlewares();
-
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider
-        .GetRequiredService<AppDbContext>();
-
-    await RoleSeeder.SeedAsync(dbContext);
-}
 
 if (app.Environment.IsDevelopment())
 {
