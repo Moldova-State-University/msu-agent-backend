@@ -18,7 +18,7 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddlewares();
 
 using (var scope = app.Services.CreateScope())
 {
