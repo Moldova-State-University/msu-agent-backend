@@ -1,4 +1,5 @@
 using MSUAgent.Api.Extensions;
+using MSUAgent.Api.Middlewares;
 using MSUAgent.Application.Queries;
 using MSUAgent.Infrastructure;
 
@@ -15,6 +16,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();
+
+app.UseMiddlewares();
 
 if (app.Environment.IsDevelopment())
 {
