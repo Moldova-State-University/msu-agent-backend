@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
 
@@ -17,7 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MSUAgent.Api\MSUAgent.Api.csproj" />
-	<ProjectReference Include="..\MSUAgent.MigrationService\MSUAgent.MigrationService.csproj" />
+    <ProjectReference Include="..\MSUAgent.MobileBff\MSUAgent.MobileBff.csproj" />
+	  <ProjectReference Include="..\MSUAgent.MigrationService\MSUAgent.MigrationService.csproj" />
   </ItemGroup>
 
 </Project>
