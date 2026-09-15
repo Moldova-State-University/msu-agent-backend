@@ -24,8 +24,8 @@ else
 {
     var backend = builder.AddProject<Projects.MSUAgent_Api>("msu-agent-api");
     builder
-        .AddProject<Projects.MSUAgent_MobileBff>("msu-agent-mobile-bff").
-        WithReference(backend)
+        .AddProject<Projects.MSUAgent_MobileBff>("msu-agent-mobile-bff")
+        .WithReference(backend)
         .WaitFor(backend);
 }
 

@@ -7,14 +7,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddServiceDiscovery();
 
-builder.Services.AddHttpClient(
-    "Backend",
-    client =>
-    {
-        client.BaseAddress =
-            new Uri("https+http://msu-agent-api");
-    })
-    .AddServiceDiscovery();
+builder.Services.AddBackendHttpClient(builder.Configuration);
 
 var app = builder.Build();
 
