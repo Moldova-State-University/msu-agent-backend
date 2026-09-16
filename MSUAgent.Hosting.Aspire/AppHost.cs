@@ -3,6 +3,10 @@ using MSUAgent.Hosting.Aspire.Extentions;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+var telegramBotToken = builder.AddParameter(
+    "telegram-bot-token",
+    secret: true);
+
 var useLocalDatabase = builder.Configuration.GetSection("UseLocalDatabase").Get<bool>()!;
 
 if (useLocalDatabase)
@@ -19,6 +23,12 @@ if (useLocalDatabase)
         .AddProject<Projects.MSUAgent_MobileBff>("msu-agent-mobile-bff")
         .WithReference(backend)
         .WaitFor(backend);
+
+    builder
+        .AddProject<Projects.MSUAgent_TelegramBff>("msu-agent-telegram-bff")
+        .WithReference(backend)
+        .WithEnvironment("Telegram__BotToken", telegramBotToken)
+        .WaitFor(backend);
 }
 else
 {
@@ -26,6 +36,11 @@ else
     builder
         .AddProject<Projects.MSUAgent_MobileBff>("msu-agent-mobile-bff")
         .WithReference(backend)
+        .WaitFor(backend);
+    builder
+        .AddProject<Projects.MSUAgent_TelegramBff>("msu-agent-telegram-bff")
+        .WithReference(backend)
+        .WithEnvironment("Telegram__BotToken", telegramBotToken)
         .WaitFor(backend);
 }
 

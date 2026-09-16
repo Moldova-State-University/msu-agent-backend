@@ -14,5 +14,6 @@
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.23" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.23" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.5.0" />
+    <PackageVersion Include="Telegram.Bot" Version="22.10.3.1" />
   </ItemGroup>
 </Project>

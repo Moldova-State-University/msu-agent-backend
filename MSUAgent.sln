@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 18
-VisualStudioVersion = 18.10.12201.205
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36915.13 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Domain", "MSUAgent.Domain\MSUAgent.Domain.csproj", "{E770692B-C9A2-4499-9C85-1C2B0D0A195A}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.MobileBff", "MSUAgent.MobileBff\MSUAgent.MobileBff.csproj", "{1F04A841-6F03-4D53-9B74-CADEFEEA7DC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.MigrationService", "MSUAgent.MigrationService\MSUAgent.MigrationService.csproj", "{1C003C49-080E-4812-B9C2-682E3CB40A1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.TelegramBff", "MSUAgent.TelegramBff\MSUAgent.TelegramBff.csproj", "{D118C372-E27F-4A1C-A007-FD89E07EC0E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{1C003C49-080E-4812-B9C2-682E3CB40A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C003C49-080E-4812-B9C2-682E3CB40A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C003C49-080E-4812-B9C2-682E3CB40A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D118C372-E27F-4A1C-A007-FD89E07EC0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D118C372-E27F-4A1C-A007-FD89E07EC0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D118C372-E27F-4A1C-A007-FD89E07EC0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D118C372-E27F-4A1C-A007-FD89E07EC0E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
