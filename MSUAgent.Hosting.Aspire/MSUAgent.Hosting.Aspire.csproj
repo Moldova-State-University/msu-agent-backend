@@ -19,6 +19,7 @@
     <ProjectReference Include="..\MSUAgent.Api\MSUAgent.Api.csproj" />
     <ProjectReference Include="..\MSUAgent.MobileBff\MSUAgent.MobileBff.csproj" />
 	  <ProjectReference Include="..\MSUAgent.MigrationService\MSUAgent.MigrationService.csproj" />
+	  <ProjectReference Include="..\MSUAgent.TelegramBff\MSUAgent.TelegramBff.csproj" />
   </ItemGroup>
 
 </Project>
