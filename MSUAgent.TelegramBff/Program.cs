@@ -1,11 +1,19 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MSUAgent.TelegramBff.Commands;
 using MSUAgent.TelegramBff.Extensions;
 using MSUAgent.TelegramBff.Handlers;
 using MSUAgent.TelegramBff.Services;
 using Telegram.Bot;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+});
+
+builder.Services.AddSingleton<TelegramCommandRegistry>();
 
 var botToken = builder.Configuration["Telegram:BotToken"]
     ?? throw new InvalidOperationException(

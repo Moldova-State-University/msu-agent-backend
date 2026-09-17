@@ -12,6 +12,7 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" />
 		<PackageReference Include="Telegram.Bot" />
 		<PackageReference Include="Microsoft.Extensions.ServiceDiscovery" />
+		<PackageReference Include="MediatR" />
 	</ItemGroup>
 
 	<ItemGroup>
