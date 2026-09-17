@@ -13,7 +13,7 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
 });
 
-builder.Services.AddSingleton<TelegramCommandRegistry>();
+builder.Services.AddSingleton<ITelegramCommandRegistry, TelegramCommandRegistry>();
 
 var botToken = builder.Configuration["Telegram:BotToken"]
     ?? throw new InvalidOperationException(

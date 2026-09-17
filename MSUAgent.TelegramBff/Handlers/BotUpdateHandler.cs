@@ -9,8 +9,8 @@ namespace MSUAgent.TelegramBff.Handlers;
 public sealed class BotUpdateHandler
 {
     private readonly IMediator _mediator;
-    private readonly TelegramCommandRegistry _commandRegistry;
-    public BotUpdateHandler(IMediator mediator, TelegramCommandRegistry commandRegistry)
+    private readonly ITelegramCommandRegistry _commandRegistry;
+    public BotUpdateHandler(IMediator mediator, ITelegramCommandRegistry commandRegistry)
     {
         _mediator = mediator;
         _commandRegistry = commandRegistry;
