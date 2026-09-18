@@ -16,6 +16,12 @@ public static class CreateUserEndpoint
             return Results.BadRequest(result.ErrorMessage);
         }
 
-        return Results.Created($"/users/{result.Value}", result.Value);
+        var response = new UserResponse(
+        result.Value!.Id,
+        result.Value.DisplayName,
+        result.Value.Email,
+        result.Value.Roles);
+
+        return Results.Ok(response);
     }
 }

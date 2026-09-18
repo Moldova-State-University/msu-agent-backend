@@ -1,11 +1,12 @@
 ﻿using MediatR;
 using MSUAgent.Application.Interfaces;
 using MSUAgent.Application.Models.Results;
+using MSUAgent.Application.Queries.Users;
 using MSUAgent.Domain.Entities;
 
 namespace MSUAgent.Application.Commands.Users;
 
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IResult<Guid>>
+public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IResult<UserDto>>    
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -14,13 +15,13 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IResu
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IResult<Guid>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<IResult<UserDto>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         var memberRole = await _unitOfWork.UserRoles.GetByNameAsync("Member", cancellationToken);
 
         if (memberRole is null)
         {
-            return ResultExtensions.Failure<Guid>(
+            return ResultExtensions.Failure<UserDto>(
                 ErrorType.NotFound,
                 "Member role not found");
         }
@@ -36,6 +37,12 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IResu
         await _unitOfWork.Users.AddAsync(user, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return user.Id.Success();
+        var userDto = new UserDto(
+            user.Id,
+            user.DisplayName,
+            user.Email,
+            [.. user.Roles.Select(role => role.Name)]);
+
+        return userDto.Success();
     }
 }

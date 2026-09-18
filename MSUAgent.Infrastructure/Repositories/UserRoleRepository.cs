@@ -11,14 +11,6 @@ public class UserRoleRepository : BaseRepository<UserRole>, IUserRoleRepository
     {
     }
 
-    public async Task<UserRole?> GetByUserIdAsync(string name, CancellationToken cancellationToken = default)
-    {
-        return await _dbContext.Set<UserRole>()
-            .FirstOrDefaultAsync(
-                role => role.Name == name,
-                cancellationToken);
-    }
-
     public async Task<UserRole?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Set<UserRole>()
