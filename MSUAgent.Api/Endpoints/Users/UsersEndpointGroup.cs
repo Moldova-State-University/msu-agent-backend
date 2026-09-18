@@ -6,5 +6,6 @@ public class UsersEndpointGroup : IEndpointGroup
     public void MapEndpoints(RouteGroupBuilder group)
     {
         group.MapGet("/{id:guid}", GetUserEndpoint.Handle);
+        group.MapPost("/", CreateUserEndpoint.Handle);
     }
 }

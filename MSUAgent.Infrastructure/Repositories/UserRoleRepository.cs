@@ -1,12 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MSUAgent.Application.Interfaces;
+﻿using MSUAgent.Application.Interfaces;
 using MSUAgent.Domain.Entities;
 using MSUAgent.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace MSUAgent.Infrastructure.Repositories;
 
@@ -14,5 +9,13 @@ public class UserRoleRepository : BaseRepository<UserRole>, IUserRoleRepository
 {
     public UserRoleRepository(AppDbContext dbContext) : base(dbContext)
     {
+    }
+
+    public async Task<UserRole?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Set<UserRole>()
+            .FirstOrDefaultAsync(
+                role => role.Name == name,
+                cancellationToken);
     }
 }
