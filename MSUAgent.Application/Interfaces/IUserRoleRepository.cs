@@ -2,4 +2,7 @@
 
 namespace MSUAgent.Application.Interfaces;
 
-public interface IUserRoleRepository : IRepository<UserRole> { }
+public interface IUserRoleRepository : IRepository<UserRole>
+{
+    Task<UserRole?> GetByNameAsync(string name, CancellationToken cancellationToken = default);
+}

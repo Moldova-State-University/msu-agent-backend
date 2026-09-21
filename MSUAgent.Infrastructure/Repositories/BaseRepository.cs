@@ -26,5 +26,10 @@ namespace MSUAgent.Infrastructure.Repositories
         {
             return await _dbContext.Set<T>().ToListAsync(cancellationToken);
         }
+
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
+        {
+            await _dbContext.Set<T>().AddAsync(entity, cancellationToken);
+        }
     }
 }
