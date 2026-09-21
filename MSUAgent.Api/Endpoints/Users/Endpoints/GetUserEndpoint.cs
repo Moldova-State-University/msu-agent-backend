@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using MSUAgent.Application.Models.Results;
 using MSUAgent.Application.Queries.Users;
+using MSUAgent.Api.Endpoints.Users.Models;
 
-namespace MSUAgent.Api.Endpoints.Users;
+namespace MSUAgent.Api.Endpoints.Users.Endpoints;
 
 public static class GetUserEndpoint
 {

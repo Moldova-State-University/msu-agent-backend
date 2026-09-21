@@ -1,7 +1,8 @@
 ﻿using MSUAgent.Application.Commands.Users;
 using MediatR;
+using MSUAgent.Api.Endpoints.Users.Models;
 
-namespace MSUAgent.Api.Endpoints.Users;
+namespace MSUAgent.Api.Endpoints.Users.Endpoints;
 public static class CreateUserEndpoint
 {
     public static async Task<IResult> Handle(

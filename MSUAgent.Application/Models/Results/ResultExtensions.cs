@@ -20,4 +20,10 @@ public static class ResultExtensions
             ErrorMessage = errorMessage
         };
     }
+    public static IResult<T> NotFound<T>(string errorMessage)
+    {
+        return Failure<T>(
+            ErrorType.NotFound,
+            errorMessage);
+    }
 }

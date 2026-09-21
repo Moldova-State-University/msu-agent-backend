@@ -22,7 +22,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IResu
         if (memberRole is null)
         {
             return ResultExtensions.Failure<UserDto>(
-                ErrorType.NotFound,
+                ErrorType.Internal,
                 "Member role not found");
         }
 

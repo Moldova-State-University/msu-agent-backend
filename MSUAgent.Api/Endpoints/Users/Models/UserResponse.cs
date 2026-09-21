@@ -1,4 +1,4 @@
-﻿namespace MSUAgent.Api.Endpoints.Users;
+﻿namespace MSUAgent.Api.Endpoints.Users.Models;
 
 public record UserResponse(
     Guid Id,
