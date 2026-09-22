@@ -24,10 +24,7 @@ public sealed class TelegramBotHostedService : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         _botClient.StartReceiving(
-            updateHandler: async(botClient,update, cancellationToken) =>
-            {
-                await _updateHandler.HandleAsync(botClient, update, cancellationToken);
-            },
+            updateHandler: _updateHandler.HandleAsync,
 
             errorHandler: async(botClient, exception, cancellationToken) =>
             {

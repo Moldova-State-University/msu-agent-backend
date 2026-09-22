@@ -14,8 +14,8 @@ public sealed class ChatQueryHandler : IRequestHandler<ChatQuery, string>
 
     public async Task<string> Handle(ChatQuery request, CancellationToken cancellationToken)
     {
-        var response = await _msuAgentClient.SendChatRequest("Hello!", cancellationToken);
+        var response = await _msuAgentClient.SendChatRequest(request.Message, cancellationToken);
 
-        return $"Response: {response}";
+        return $"{response}";
     }
 }

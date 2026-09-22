@@ -9,8 +9,8 @@ public sealed class TelegramCommandRegistry : ITelegramCommandRegistry
     private readonly Dictionary<string, Func<IRequest<string>>> _commands =
         new()
         {
-            ["/health"] = () => new HealthQuery(),
-            ["/chat"] = () => new ChatQuery(),
+            ["/health"] = () => new HealthQuery()//,
+            //["/chat"] = () => new ChatQuery(),
         };
 
     public IRequest<string>? FindCommand(string command)
