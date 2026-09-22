@@ -1,5 +1,4 @@
 using MSUAgent.Api.Extensions;
-using MSUAgent.Api.Middlewares;
 using MSUAgent.Application.Queries;
 using MSUAgent.Infrastructure;
 
@@ -12,6 +11,7 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(GetStatusQuery).Assembly));
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddAiHttpClient();
 
 builder.Services.AddHealthChecks();
 
