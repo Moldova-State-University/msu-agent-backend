@@ -13,6 +13,8 @@
 		<PackageReference Include="Telegram.Bot" />
 		<PackageReference Include="Microsoft.Extensions.ServiceDiscovery" />
 		<PackageReference Include="MediatR" />
+		<PackageReference Include="Serilog.Extensions.Hosting" />
+		<PackageReference Include="Serilog.Sinks.Console" />
 	</ItemGroup>
 
 	<ItemGroup>

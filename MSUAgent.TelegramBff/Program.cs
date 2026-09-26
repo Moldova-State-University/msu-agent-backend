@@ -4,9 +4,15 @@ using MSUAgent.TelegramBff.Commands;
 using MSUAgent.TelegramBff.Extensions;
 using MSUAgent.TelegramBff.Handlers;
 using MSUAgent.TelegramBff.Services;
+using Serilog;
 using Telegram.Bot;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+builder.Services.AddSerilog(configuration =>
+{
+    configuration.WriteTo.Console();
+});
 
 builder.Services.AddMediatR(cfg =>
 {

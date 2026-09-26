@@ -26,7 +26,15 @@ public sealed class TelegramBotHostedService : BackgroundService
         _botClient.StartReceiving(
             updateHandler: async(botClient,update, cancellationToken) =>
             {
-                await _updateHandler.HandleAsync(botClient, update, cancellationToken);
+                try
+                {
+                    await _updateHandler.HandleAsync(botClient, update, cancellationToken);
+                }
+                catch (Exception exception)
+                {
+                    await _errorHandler.HandleAsync(exception, cancellationToken);
+                }
+              
             },
 
             errorHandler: async(botClient, exception, cancellationToken) =>
