@@ -44,4 +44,8 @@ else
         .WaitFor(backend);
 }
 
+builder.AddProject<Projects.MSUAgent_Identity_API>("msuagent-identity-api");
+
+builder.AddProject<Projects.MSUAgent_Identity_Infrastructure_Rest>("msuagent-identity-infrastructure-rest");
+
 builder.Build().Run();

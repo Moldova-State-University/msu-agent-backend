@@ -1,5 +1,5 @@
 ﻿using MediatR;
 
-namespace MSUAgent.Application.Queries;
+namespace MSUAgent.Application.Queries.Status;
 
 public sealed record GetStatusQuery : IRequest<string>;
