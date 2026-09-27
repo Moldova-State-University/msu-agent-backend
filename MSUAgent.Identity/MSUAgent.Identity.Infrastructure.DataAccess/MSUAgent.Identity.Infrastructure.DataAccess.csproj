@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" />
+    <Folder Include="Configurations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MSUAgent.Domain\MSUAgent.Domain.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
 
 </Project>

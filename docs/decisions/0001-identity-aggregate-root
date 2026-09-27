@@ -1,0 +1,64 @@
+# Identity aggregate root
+
+* **Status:** Accepted
+* **Date:** 2026-09-27
+* **Deciders:** MSUAgent.Identity team
+
+## Context
+
+We need to model the link between a `User` and an external account (Telegram,
+Google, ...). Two invariants apply:
+
+* `Identity-I1`: `(provider, externalId)` is unique across the system.
+* `Identity-I2`: a `User` has at most one identity per provider.
+
+`Identity-I1` is inherently global — it needs knowledge of all identities.
+`Identity-I2` is scoped per user but also cannot be enforced inside a single
+aggregate instance without a query.
+
+## Decision
+
+`Identity` is its own **aggregate root**.
+
+* It has its own `Id`, its own repository, and its own lifecycle.
+* It references `User` by `UserId` (cross-aggregate reference by ID).
+* `User` does **not** embed a collection of identities.
+* Both invariants are enforced by unique indexes on the `identity` table.
+* Link/unlink are coordinated by an application service.
+
+## Consequences
+
+### Positive
+* `Identity` can be created, queried, and reasoned about independently.
+* Merge between users (moving an identity from one `User` to another) is a
+  simple `UPDATE identity SET user_id = ...` — no aggregate surgery.
+* Both invariants are DB-enforced atomically; no application-level locking.
+* Adding a separate Authentication context that operates on `Identity` directly
+  requires no refactor.
+
+### Negative
+* Link/unlink is a **cross-aggregate** operation. In a single-DB setup this is
+  a single transaction; if the boundaries ever split, it becomes a saga.
+* `User` is now very thin — basically an ID plus behavior delegated to the
+  application service. This is fine, but call it out so nobody expects rich
+  behavior on `User`.
+
+### Neutral
+* The model assumes both aggregates live in the same DB. If they are split
+  later, `Identity-I2` becomes a cross-service invariant and requires a
+  different enforcement strategy (outbox + reconciliation, or a shared
+  “uniqueness” service).
+
+## Alternatives considered
+
+* **`Identity` as an entity inside the `User` aggregate.**
+  Rejected: it makes `Identity` invisible outside the aggregate, prevents
+  independent use from other contexts, and forces merge to operate on two
+  aggregates anyway (moving entities across roots), losing the main benefit.
+
+## Triggers to revisit
+
+* `Identity` and `User` are moved to separate services/databases.
+* A read/write split makes the unique index non-authoritative.
+* `Identity` gains additional ownership (credentials, sessions) that argues for
+  merging it with a future Authentication aggregate.

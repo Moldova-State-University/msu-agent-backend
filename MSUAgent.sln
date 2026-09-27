@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36915.13 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12217.157 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Domain", "MSUAgent.Domain\MSUAgent.Domain.csproj", "{E770692B-C9A2-4499-9C85-1C2B0D0A195A}"
 EndProject
@@ -23,6 +23,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.MigrationService", "MSUAgent.MigrationService\MSUAgent.MigrationService.csproj", "{1C003C49-080E-4812-B9C2-682E3CB40A1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.TelegramBff", "MSUAgent.TelegramBff\MSUAgent.TelegramBff.csproj", "{D118C372-E27F-4A1C-A007-FD89E07EC0E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSUAgent.Identity", "MSUAgent.Identity", "{66C9DAAC-76CF-4D23-82C1-2C301700B63A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Identity.Infrastructure.Rest", "MSUAgent.Identity\MSUAgent.Identity.Infrastructure.Rest\MSUAgent.Identity.Infrastructure.Rest.csproj", "{FC8EB77F-8571-FC93-3D2A-8051457EED72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Identity.Infrastructure.DataAccess", "MSUAgent.Identity\MSUAgent.Identity.Infrastructure.DataAccess\MSUAgent.Identity.Infrastructure.DataAccess.csproj", "{033FA4C8-7594-509D-3955-E298FCE97616}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Identity.Domain", "MSUAgent.Identity\MSUAgent.Identity.Domain\MSUAgent.Identity.Domain.csproj", "{FB59A1E9-1480-8F93-5E63-1D71BC4C2E84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Identity.Application", "MSUAgent.Identity\MSUAgent.Identity.Application\MSUAgent.Identity.Application.csproj", "{DAEB2D25-7EFF-5485-D25D-C754FAC54006}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSUAgent.Identity.Infrastructure", "MSUAgent.Identity.Infrastructure\MSUAgent.Identity.Infrastructure.csproj", "{6DED747C-72A7-43F4-822D-EDA6A0B48ADA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,9 +74,36 @@ Global
 		{D118C372-E27F-4A1C-A007-FD89E07EC0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D118C372-E27F-4A1C-A007-FD89E07EC0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D118C372-E27F-4A1C-A007-FD89E07EC0E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC8EB77F-8571-FC93-3D2A-8051457EED72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC8EB77F-8571-FC93-3D2A-8051457EED72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC8EB77F-8571-FC93-3D2A-8051457EED72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC8EB77F-8571-FC93-3D2A-8051457EED72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{033FA4C8-7594-509D-3955-E298FCE97616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033FA4C8-7594-509D-3955-E298FCE97616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033FA4C8-7594-509D-3955-E298FCE97616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033FA4C8-7594-509D-3955-E298FCE97616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB59A1E9-1480-8F93-5E63-1D71BC4C2E84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB59A1E9-1480-8F93-5E63-1D71BC4C2E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB59A1E9-1480-8F93-5E63-1D71BC4C2E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB59A1E9-1480-8F93-5E63-1D71BC4C2E84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAEB2D25-7EFF-5485-D25D-C754FAC54006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEB2D25-7EFF-5485-D25D-C754FAC54006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEB2D25-7EFF-5485-D25D-C754FAC54006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEB2D25-7EFF-5485-D25D-C754FAC54006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DED747C-72A7-43F4-822D-EDA6A0B48ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DED747C-72A7-43F4-822D-EDA6A0B48ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DED747C-72A7-43F4-822D-EDA6A0B48ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DED747C-72A7-43F4-822D-EDA6A0B48ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC8EB77F-8571-FC93-3D2A-8051457EED72} = {66C9DAAC-76CF-4D23-82C1-2C301700B63A}
+		{033FA4C8-7594-509D-3955-E298FCE97616} = {66C9DAAC-76CF-4D23-82C1-2C301700B63A}
+		{FB59A1E9-1480-8F93-5E63-1D71BC4C2E84} = {66C9DAAC-76CF-4D23-82C1-2C301700B63A}
+		{DAEB2D25-7EFF-5485-D25D-C754FAC54006} = {66C9DAAC-76CF-4D23-82C1-2C301700B63A}
+		{6DED747C-72A7-43F4-822D-EDA6A0B48ADA} = {66C9DAAC-76CF-4D23-82C1-2C301700B63A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {281720CF-DA3A-4B67-8EB0-F1C22508748A}
