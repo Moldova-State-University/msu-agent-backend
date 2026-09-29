@@ -6,9 +6,9 @@ namespace MSUAgent.Api.Endpoints.Chats.Endpoints;
 
 public class ChatEndpoint
 {
-    public static async Task<IResult> Handle([FromBody] string message, IMediator mediator)
+    public static async Task<IResult> Handle([FromBody] string message, IMediator mediator, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new ChatQuery() { Message = message});
+        var result = await mediator.Send(new ChatQuery(message), cancellationToken);
         return Results.Ok(result);
     }
 }
