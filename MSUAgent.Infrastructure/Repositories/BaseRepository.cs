@@ -2,34 +2,33 @@
 using MSUAgent.Application.Interfaces;
 using MSUAgent.Infrastructure.Persistence;
 
-namespace MSUAgent.Infrastructure.Repositories
+namespace MSUAgent.Infrastructure.Repositories;
+
+public class BaseRepository<T> : IRepository<T> where T : class
 {
-    public class BaseRepository<T> : IRepository<T> where T : class
+    protected readonly AppDbContext _dbContext;
+
+    public BaseRepository(AppDbContext dbContext)
     {
-        protected readonly AppDbContext _dbContext;
+        _dbContext = dbContext;
+    }
 
-        public BaseRepository(AppDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+    public virtual async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Set<T>()
+            .FirstOrDefaultAsync(
+            entity => EF.Property<Guid>(entity, "Id") == id,
+            cancellationToken
+           );
+    }
 
-        public virtual async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
-        {
-            return await _dbContext.Set<T>()
-                .FirstOrDefaultAsync(
-                entity => EF.Property<Guid>(entity, "Id") == id,
-                cancellationToken
-               );
-        }
+    public async Task<IEnumerable<T>> GetListAsync(CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Set<T>().ToListAsync(cancellationToken);
+    }
 
-        public async Task<IEnumerable<T>> GetListAsync(CancellationToken cancellationToken = default)
-        {
-            return await _dbContext.Set<T>().ToListAsync(cancellationToken);
-        }
-
-        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
-        {
-            await _dbContext.Set<T>().AddAsync(entity, cancellationToken);
-        }
+    public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
+    {
+        await _dbContext.Set<T>().AddAsync(entity, cancellationToken);
     }
 }

@@ -5,12 +5,15 @@ namespace MSUAgent.Api.Extensions;
 
 public static class HttpClientExtensions
 {
-    public static IServiceCollection AddAiHttpClient(this IServiceCollection services/*, IConfiguration configuration*/)
+    public static IServiceCollection AddAiHttpClient(this IServiceCollection services, IConfiguration configuration)
     {
-        //var baseUrl = configuration["Backend:BaseUrl"] ?? throw new InvalidOperationException("Backend base URL is not configured.");
-        services.AddHttpClient<IAiClient, AiClient>(/*"Ai",*/ client =>
+        var baseUrl = configuration["Ai:BaseUrl"]
+            ?? throw new InvalidOperationException(
+                "AI service base URL is not configured.");
+
+        services.AddHttpClient<IAiClient, AiClient>(client =>
         {
-            client.BaseAddress = new Uri("https://localhost:7035");
+            client.BaseAddress = new Uri(baseUrl);
         });
 
         return services;

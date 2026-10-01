@@ -1,7 +1,6 @@
-﻿namespace MSUAgent.Application.Interfaces
+﻿namespace MSUAgent.Application.Interfaces;
+
+public interface IAiClient
 {
-    public interface IAiClient
-    {
-        Task<string> SendChatRequest(string message, CancellationToken cancellationToken);
-    }
+    Task<string> SendChatRequest(string message, CancellationToken cancellationToken);
 }
