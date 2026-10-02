@@ -1,5 +1,6 @@
 ﻿using MSUAgent.Application.Interfaces;
 using MSUAgent.Application.Models;
+using MSUAgent.Application.Models.Results;
 using System.Net.Http.Json;
 
 namespace MSUAgent.Infrastructure.Clients;
@@ -13,20 +14,29 @@ public class AiClient : IAiClient
         _httpClient = httpClient;
     }
 
-    public async Task<string> SendChatRequest(string message, CancellationToken cancellationToken)
+    public async Task<IResult<string>> SendChatRequest(string message, CancellationToken cancellationToken)
     {
         var response = await _httpClient.PostAsync(
             "/api/chat",
             JsonContent.Create(message),
             cancellationToken);
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            return ResultExtensions.Failure<string>(
+                ErrorType.Internal,
+                "AI service request failed.");
+        }
 
-        var result = await response.Content.ReadFromJsonAsync<AiChatResponse>(
-            cancellationToken);
+        var result = await response.Content.ReadFromJsonAsync<AiChatResponse>(cancellationToken);
 
-        return result?.Answer
-            ?? throw new InvalidOperationException(
+        if (string.IsNullOrEmpty(result?.Answer))
+        {
+            return ResultExtensions.Failure<string>(
+                ErrorType.Internal,
                 "AI service returned an empty response.");
+        }
+
+        return result.Answer.Success();
     }
 }

@@ -30,6 +30,11 @@ public sealed class BotUpdateHandler
 
         if (request is null)
         {
+            await botClient.SendMessage(
+                chatId: update.Message.Chat.Id,
+                text: "Unknown command.",
+                cancellationToken: cancellationToken);
+
             return;
         }
 

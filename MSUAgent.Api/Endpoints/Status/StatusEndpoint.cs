@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MSUAgent.Application.Queries;
+using MSUAgent.Application.Queries.Status;
 
 namespace MSUAgent.Api.Endpoints.Status;
 

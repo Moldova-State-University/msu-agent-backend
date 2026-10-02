@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using MSUAgent.Application.Interfaces;
+using MSUAgent.Application.Models.Results;
 
 namespace MSUAgent.Application.Queries.Chats;
 
-public sealed class ChatQueryHandler : IRequestHandler<ChatQuery, string>
+public sealed class ChatQueryHandler : IRequestHandler<ChatQuery, IResult<string>>
 {
     private readonly IAiClient _aiClient;
 
@@ -12,7 +13,7 @@ public sealed class ChatQueryHandler : IRequestHandler<ChatQuery, string>
         _aiClient = aiClient;
     }
 
-    public async Task<string> Handle(ChatQuery request, CancellationToken cancellationToken)
+    public async Task<IResult<string>> Handle(ChatQuery request, CancellationToken cancellationToken)
     {
         return await _aiClient.SendChatRequest(request.Message, cancellationToken);
     }

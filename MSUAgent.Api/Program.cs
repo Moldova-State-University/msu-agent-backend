@@ -1,5 +1,5 @@
 using MSUAgent.Api.Extensions;
-using MSUAgent.Application.Queries;
+using MSUAgent.Application.Queries.Status;
 using MSUAgent.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
