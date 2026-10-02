@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using MSUAgent.TelegramBff.Clients;
 
-
 namespace MSUAgent.TelegramBff.Extensions;
 
 public static class HttpClientExtensions

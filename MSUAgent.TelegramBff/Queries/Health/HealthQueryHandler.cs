@@ -19,4 +19,3 @@ public sealed class HealthQueryHandler : IRequestHandler<HealthQuery, string>
         return $"Health: {(int)response.StatusCode}";
     }
 }
-

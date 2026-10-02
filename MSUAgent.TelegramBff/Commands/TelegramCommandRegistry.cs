@@ -10,6 +10,7 @@ public sealed class TelegramCommandRegistry : ITelegramCommandRegistry
         {
             ["/health"] = () => new HealthQuery()
         };
+
     public IRequest<string>? FindCommand(string command)
     {
         return _commands.TryGetValue(command, out var commandFactory)

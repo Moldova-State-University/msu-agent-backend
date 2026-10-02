@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MSUAgent.Application.Queries;
+namespace MSUAgent.Application.Queries.Status;
 
 public sealed class GetStatusQueryHandler : IRequestHandler<GetStatusQuery, string>
 {

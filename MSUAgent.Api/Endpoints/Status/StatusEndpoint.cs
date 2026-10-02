@@ -1,15 +1,14 @@
 ﻿using MediatR;
-using MSUAgent.Application.Queries;
+using MSUAgent.Application.Queries.Status;
 
-namespace MSUAgent.Api.Endpoints.Status
+namespace MSUAgent.Api.Endpoints.Status;
+
+public class StatusEndpoint
 {
-    public class StatusEndpoint
+    public static async Task<IResult> Handle(IMediator mediator)
     {
-        public static async Task<IResult> Handle(IMediator mediator)
-        {
-            var status = await mediator.Send(new GetStatusQuery());
+        var status = await mediator.Send(new GetStatusQuery());
 
-            return Results.Ok(status);
-        }
+        return Results.Ok(status);
     }
 }

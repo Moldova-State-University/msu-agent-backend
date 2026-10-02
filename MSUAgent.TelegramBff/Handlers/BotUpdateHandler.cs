@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using MSUAgent.TelegramBff.Clients;
 using MSUAgent.TelegramBff.Commands;
+using MSUAgent.TelegramBff.Queries.Chat;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -10,6 +10,7 @@ public sealed class BotUpdateHandler
 {
     private readonly IMediator _mediator;
     private readonly ITelegramCommandRegistry _commandRegistry;
+
     public BotUpdateHandler(IMediator mediator, ITelegramCommandRegistry commandRegistry)
     {
         _mediator = mediator;
@@ -18,15 +19,22 @@ public sealed class BotUpdateHandler
 
     public async Task HandleAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        if (update.Message?.Text is not { } messageText) 
+        if (update.Message?.Text is not { } messageText)
         {
             return;
         }
 
-        var request = _commandRegistry.FindCommand(messageText);
+        var request = messageText.StartsWith('/')
+            ? _commandRegistry.FindCommand(messageText)
+            : new ChatQuery(messageText);
 
         if (request is null)
         {
+            await botClient.SendMessage(
+                chatId: update.Message.Chat.Id,
+                text: "Unknown command.",
+                cancellationToken: cancellationToken);
+
             return;
         }
 
